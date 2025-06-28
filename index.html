@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DREAM Lab - Data-Driven Research on Environment and AI Modelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a5d1a;
+            --secondary: #2e8540;
+            --accent: #4caf50;
+            --light: #e8f5e9;
+            --dark: #0d3b0d;
+            --text: #333;
+            --background: #f9fbf9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1774&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background: #3d8b40;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Mission/Vision Section */
+        .mission-vision {
+            background: linear-gradient(to right, var(--light), #fff);
+        }
+        
+        .cards {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Research Areas */
+        .research-areas {
+            background: var(--light);
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .research-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .research-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .research-icon {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .research-text {
+            padding: 25px;
+        }
+        
+        .research-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Supervisor Section */
+        .supervisor {
+            text-align: center;
+        }
+        
+        .supervisor-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .supervisor-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--light);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .supervisor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .supervisor-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .supervisor-content p {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(to right, var(--light), #fff);
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            min-width: 30px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Map Section */
+        .map {
+            height: 400px;
+            background: #e9e9e9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Partners Section */
+        .partners {
+            background-color: var(--light);
+            padding: 60px 0;
+        }
+        
+        .partners-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .partner-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .partner-logo {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>DREAM Lab</h1>
+                    <p>Data-Driven Research on Environment and AI Modelling</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="research.html"><i class="fas fa-book"></i> Research</a></li>
+                    <li><a href="people.html"><i class="fas fa-users"></i> People</a></li>
+                    <li><a href="#supervisor"><i class="fas fa-user-tie"></i> Supervisor</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Transforming Environmental Research with AI</h2>
+            <p>Advancing sustainable solutions through data-driven environmental modelling and AI</p>
+            <a href="#contact" class="cta-button">Collaborate With Us</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About DREAM Lab</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Welcome to Our Research Laboratory</h3>
+                    <p>The Data-Driven Research on Environment and AI Modelling (DREAM) Lab at Jagannath University is at the forefront of interdisciplinary research, combining environmental science, geography, and cutting-edge AI technologies.</p>
+                    <p>Our lab brings together experts from diverse fields to tackle complex environmental challenges through innovative data analysis, machine learning, and deep learning approaches. We focus on developing sustainable solutions for environmental conservation, disaster management, and ecological preservation.</p>
+                    <p>Our collaborative environment fosters creativity and innovation, providing students and researchers with the resources and mentorship needed to make significant contributions to environmental science and AI applications.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Environmental Research">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission/Vision Section -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission & Vision</h2>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To advance environmental science through innovative data-driven research, develop AI-based solutions for environmental challenges, and foster interdisciplinary collaboration to address pressing ecological issues.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To become a leading research hub in environmental AI modelling, recognized globally for developing sustainable solutions that balance technological advancement with ecological preservation for future generations.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Our Approach</h3>
+                    <p>Combining field data collection with advanced machine learning techniques to model complex environmental systems, predict ecological changes, and develop strategies for sustainable resource management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Areas -->
+    <section class="research-areas" id="research">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Areas</h2>
+            </div>
+            <div class="research-grid">
+                <div class="research-item">
+                    <div class="research-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="research-text">
+                        <h3>Environmental Modelling</h3>
+                        <p>Developing computational models to simulate environmental processes, predict changes, and assess human impact on ecosystems.</p>
+                    </div>
+                </div>
+                <div class="research-item">
+                    <div class="research-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="research-text">
+                        <h3>Disaster Management</h3>
+                        <p>Using AI to predict natural disasters, model their impacts, and develop effective response strategies.</p>
+                    </div>
+                </div>
+                <div class="research-item">
+                    <div class="research-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="research-text">
+                        <h3>Ecological Environment</h3>
+                        <p>Studying biodiversity patterns, ecosystem dynamics, and conservation strategies using data-driven approaches.</p>
+                    </div>
+                </div>
+                <div class="research-item">
+                    <div class="research-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="research-text">
+                        <h3>Machine Learning Applications</h3>
+                        <p>Applying ML algorithms to analyze environmental data, identify patterns, and make predictions about ecological changes.</p>
+                    </div>
+                </div>
+                <div class="research-item">
+                    <div class="research-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="research-text">
+                        <h3>Deep Learning for Analysis</h3>
+                        <p>Utilizing deep neural networks for complex environmental data analysis, image recognition, and predictive modeling.</p>
+                    </div>
+                </div>
+                <div class="research-item">
+                    <div class="research-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <div class="research-text">
+                        <h3>Climate Change Research</h3>
+                        <p>Analyzing climate patterns, assessing impacts, and developing mitigation strategies through data science.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supervisor Section -->
+    <section class="supervisor" id="supervisor">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lab Supervisor</h2>
+            </div>
+            <div class="supervisor-content">
+                <div class="supervisor-img">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1776&q=80" alt="Dr. N M Refat Nasher">
+                </div>
+                <h3>Dr. N M Refat Nasher</h3>
+                <p>Professor & Lab Supervisor</p>
+                <p>Department of Geography and Environment, Jagannath University</p>
+                <p>Dr. Nasher is a distinguished researcher with over 15 years of experience in environmental science and geospatial analysis. His research focuses on integrating AI methodologies with traditional environmental studies to address contemporary ecological challenges.</p>
+                <p><a href="https://jnu.ac.bd/fm/pview/10311" target="_blank" class="cta-button" style="display: inline-block; padding: 10px 25px; margin-top: 15px;">View Faculty Profile</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Address</h4>
+                                <p>Department of Geography and Environment<br>
+                                Jagannath University<br>
+                                Dhaka 1100, Bangladesh</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>dreamlabjnu@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+880 2 XXXX XXXX</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Interested in Working With Us?</h3>
+                    <p>We welcome collaborations with researchers, institutions, and industry partners. Whether you're a student interested in joining our lab or an organization seeking research partnerships, we'd love to hear from you.</p>
+                    <p>Our lab offers opportunities for:</p>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Graduate research positions</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Collaborative research projects</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Data analysis partnerships</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Joint publications</li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="collaborationForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="affiliation">Affiliation</label>
+                            <input type="text" id="affiliation" name="affiliation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Area of Interest</label>
+                            <input type="text" id="interest" name="interest" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="border: none; cursor: pointer;">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section>
+        <div class="container">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.448708716784!2d90.38973807491902!3d23.733921789073224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8d9c8d41b39%3A0x5e3a9f4f3a6a3a6f!2sJagannath%20University!5e0!3m2!1sen!2sbd!4v1691500000000!5m2!1sen!2sbd" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container partners-container">
+            <div class="section-title">
+                <h2>Our Partners</h2>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Jagannath_University_logo.png/220px-Jagannath_University_logo.png" alt="Jagannath University">
+                    </div>
+                    <h3>Jagannath University</h3>
+                    <p>Our host institution providing resources and support for cutting-edge research</p>
+                    <a href="https://www.jnu.ac.bd/" target="_blank" class="cta-button" style="display: inline-block; padding: 10px 25px; margin-top: 15px;">Visit Website</a>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/University_Grants_Commission_%28Bangladesh%29_logo.svg/220px-University_Grants_Commission_%28Bangladesh%29_logo.svg.png" alt="University Grants Commission">
+                    </div>
+                    <h3>University Grants Commission</h3>
+                    <p>Supporting higher education and research initiatives across Bangladesh</p>
+                    <a href="http://www.ugc.gov.bd/" target="_blank" class="cta-button" style="display: inline-block; padding: 10px 25px; margin-top: 15px;">Visit Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DREAM Lab</h3>
+                    <p>Data-Driven Research on Environment and AI Modelling</p>
+                    <p>Advancing environmental science through innovative research and AI applications for a sustainable future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-researchgate"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#about" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="research.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Research</a></li>
+                        <li><a href="people.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> People</a></li>
+                        <li><a href="#supervisor" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Supervisor</a></li>
+                        <li><a href="#contact" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Department of Geography and Environment, Jagannath University, Dhaka 1100, Bangladesh</p>
+                    <p><i class="fas fa-envelope"></i> dreamlabjnu@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +880 2 XXXX XXXX</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DREAM Lab, Jagannath University. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('collaborationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const affiliation = document.getElementById('affiliation').value;
+            const interest = document.getElementById('interest').value;
+            const message = document.getElementById('message').value;
+            
+            // Create email content
+            const subject = `Collaboration Inquiry from ${name}`;
+            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AAffiliation: ${affiliation}%0D%0AArea of Interest: ${interest}%0D%0AMessage: ${message}`;
+            
+            // Create mailto link
+            const mailtoLink = `mailto:dreamlabjnu@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert(`Thank you ${name}! Your inquiry has been submitted. We'll contact you at ${email} shortly.`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        window.addEventListener('scroll', function() {
+            const cards = document.querySelectorAll('.card, .research-item, .partner-card');
+            const windowHeight = window.innerHeight;
+            
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                if (cardPosition < windowHeight - 50) {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Initialize card positions for animation
+        document.querySelectorAll('.card, .research-item, .partner-card').forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        // Trigger initial animation
+        setTimeout(() => {
+            window.dispatchEvent(new Event('scroll'));
+        }, 500);
+    </script>
+</body>
+</html>
