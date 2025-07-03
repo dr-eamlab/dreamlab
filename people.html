@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People | DREAM Lab - Data-Driven Research on Environment and AI Modelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a5d1a;
+            --secondary: #2e8540;
+            --accent: #4caf50;
+            --light: #e8f5e9;
+            --dark: #0d3b0d;
+            --text: #333;
+            --background: #f9fbf9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Hero Section */
+        .people-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .people-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .people-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* People Section */
+        .people-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .person-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .person-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .person-header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            padding: 25px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .person-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        
+        .person-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .person-info {
+            flex: 1;
+        }
+        
+        .person-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .person-role {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .person-body {
+            padding: 25px;
+        }
+        
+        .person-bio {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .research-interests {
+            margin-bottom: 20px;
+        }
+        
+        .interests-title {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .interest-tag {
+            background: var(--light);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--light);
+            color: var(--primary);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .footer-social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .people-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .people-hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                gap: 10px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .people-hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .person-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .person-info {
+                margin-top: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .people-hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .people-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>DREAM Lab</h1>
+                    <p>Data-Driven Research on Environment and AI Modelling</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="research.html"><i class="fas fa-book"></i> Research</a></li>
+                    <li><a href="project.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="people.html" class="active"><i class="fas fa-users"></i> People</a></li>
+                    <li><a href="index.html#supervisor"><i class="fas fa-user-tie"></i> Supervisor</a></li>
+                    <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- People Hero -->
+    <section class="people-hero">
+        <div class="container people-hero-content">
+            <h2>Our Research Team</h2>
+            <p>Meet the passionate researchers driving environmental innovation through data and AI</p>
+        </div>
+    </section>
+
+    <!-- People Section -->
+    <section class="people-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lab Members</h2>
+                <p>Dedicated researchers working at the intersection of environmental science and AI</p>
+            </div>
+            
+            <div class="people-grid">
+                <!-- Person 1 -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1776&q=80" alt="Dr. N M Refat Nasher">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Dr. N M Refat Nasher</h3>
+                            <p class="person-role">Lab Supervisor & Professor</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">Professor of Geography and Environment with 15+ years of research experience. Specializes in environmental geochemistry, climate change, and AI applications in environmental modeling. PhD from Kobe University, Japan.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Environmental Geochemistry</span>
+                                <span class="interest-tag">Climate Change</span>
+                                <span class="interest-tag">AI Modeling</span>
+                                <span class="interest-tag">Water Quality</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Person 2 -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Most. Mitu Akter">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Most. Mitu Akter</h3>
+                            <p class="person-role">Research Associate</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">Environmental scientist specializing in climate change vulnerability and adaptation. Currently working on community resilience in coastal regions. MSc in Environmental Science from Jagannath University.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Climate Adaptation</span>
+                                <span class="interest-tag">Community Resilience</span>
+                                <span class="interest-tag">Coastal Ecosystems</span>
+                                <span class="interest-tag">GIS Applications</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Person 3 -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Md. Mahmudul Hasan">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Md. Mahmudul Hasan</h3>
+                            <p class="person-role">PhD Candidate</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">PhD researcher focusing on machine learning applications in landslide susceptibility modeling. Developed novel AI models for predicting geological hazards in hilly regions of Bangladesh.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Landslide Prediction</span>
+                                <span class="interest-tag">Machine Learning</span>
+                                <span class="interest-tag">Geohazards</span>
+                                <span class="interest-tag">Remote Sensing</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Person 4 - Md. Talha with custom link -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Md. Talha">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Md. Talha</h3>
+                            <p class="person-role">Data Scientist</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">Data scientist specializing in deep learning applications for environmental modeling. Developed hybrid models for river water level forecasting and landslide prediction. MSc in Geoinformatics.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Deep Learning</span>
+                                <span class="interest-tag">Hydrological Modeling</span>
+                                <span class="interest-tag">Geospatial AI</span>
+                                <span class="interest-tag">Time Series Analysis</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="http://md-talha.netlify.app" class="social-link" target="_blank"><i class="fas fa-globe"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Person 5 -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Md. Tasim Ferdous">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Md. Tasim Ferdous</h3>
+                            <p class="person-role">GIS Specialist</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">GIS expert with expertise in remote sensing and spatial analysis. Currently working on ecological quality assessment using remote sensing indices. Contributed to multiple land use change detection projects.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Remote Sensing</span>
+                                <span class="interest-tag">Spatial Analysis</span>
+                                <span class="interest-tag">Ecological Assessment</span>
+                                <span class="interest-tag">Land Use Change</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Team Members -->
+                
+                <!-- Person 6 -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Ayesha Rahman">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Ayesha Rahman</h3>
+                            <p class="person-role">Environmental Analyst</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">Environmental analyst with expertise in water quality assessment and pollution monitoring. Currently researching heavy metal contamination in urban water bodies and its ecological impacts.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Water Quality</span>
+                                <span class="interest-tag">Pollution Monitoring</span>
+                                <span class="interest-tag">Heavy Metals</span>
+                                <span class="interest-tag">Ecological Risk</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Person 7 -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Farhana Islam">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Farhana Islam</h3>
+                            <p class="person-role">Climate Researcher</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">Climate researcher focused on extreme weather events and their impacts on coastal communities. Developing early warning systems using climate models and machine learning approaches.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Extreme Weather</span>
+                                <span class="interest-tag">Climate Modeling</span>
+                                <span class="interest-tag">Early Warning Systems</span>
+                                <span class="interest-tag">Coastal Vulnerability</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Person 8 -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://images.unsplash.com/photo-1556157382-97eda2f9e946?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Rahim Hossain">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Rahim Hossain</h3>
+                            <p class="person-role">AI Research Engineer</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">AI engineer developing deep learning models for environmental applications. Specializes in computer vision for satellite image analysis and time series forecasting for hydrological systems.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Deep Learning</span>
+                                <span class="interest-tag">Computer Vision</span>
+                                <span class="interest-tag">Satellite Imagery</span>
+                                <span class="interest-tag">Hydrological Forecasting</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Person 9 -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Tasnim Khan">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Tasnim Khan</h3>
+                            <p class="person-role">Research Assistant</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">Research assistant working on noise pollution assessment in urban environments. Collecting and analyzing spatial-temporal noise data to develop mitigation strategies for urban green spaces.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Noise Pollution</span>
+                                <span class="interest-tag">Urban Ecology</span>
+                                <span class="interest-tag">Spatial Analysis</span>
+                                <span class="interest-tag">Environmental Monitoring</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DREAM Lab</h3>
+                    <p>Data-Driven Research on Environment and AI Modelling</p>
+                    <p>Advancing environmental science through innovative research and AI applications for a sustainable future.</p>
+                    <div class="footer-social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-researchgate"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="index.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="research.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Research</a></li>
+                        <li><a href="project.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="people.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> People</a></li>
+                        <li><a href="index.html#supervisor" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Supervisor</a></li>
+                        <li><a href="index.html#contact" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Department of Geography and Environment, Jagannath University, Dhaka 1100, Bangladesh</p>
+                    <p><i class="fas fa-envelope"></i> dreamlabjnu@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +880 2 XXXX XXXX</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DREAM Lab, Jagannath University. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll for person cards
+        window.addEventListener('scroll', function() {
+            const cards = document.querySelectorAll('.person-card');
+            const windowHeight = window.innerHeight;
+            
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                if (cardPosition < windowHeight - 50) {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Initialize card positions for animation
+        document.querySelectorAll('.person-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        // Trigger initial animation
+        setTimeout(() => {
+            window.dispatchEvent(new Event('scroll'));
+        }, 500);
+    </script>
+</body>
+</html>
