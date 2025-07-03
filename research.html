@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | DREAM Lab - Data-Driven Research on Environment and AI Modelling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a5d1a;
+            --secondary: #2e8540;
+            --accent: #4caf50;
+            --light: #e8f5e9;
+            --dark: #0d3b0d;
+            --text: #333;
+            --background: #f9fbf9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Hero Section */
+        .research-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .research-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .research-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* Research List Styles */
+        .research-container {
+            padding: 60px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .publication-list {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .publication-item {
+            background: white;
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .publication-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .publication-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark);
+            line-height: 1.4;
+        }
+        
+        .publication-authors {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        
+        .publication-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .publication-journal {
+            color: var(--secondary);
+            font-weight: 500;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .publication-year {
+            background: var(--accent);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+        
+        .publication-citations {
+            color: #777;
+            font-weight: 500;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .citation-count {
+            display: inline-block;
+            background: var(--light);
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-left: 5px;
+        }
+        
+        .research-stats {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 900px;
+            margin: 40px auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            padding: 15px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .research-hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                gap: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .publication-details {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .research-hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .stat-item {
+                width: 50%;
+            }
+            
+            .publication-item {
+                padding: 20px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .research-hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .stat-item {
+                width: 100%;
+            }
+            
+            .publication-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>DREAM Lab</h1>
+                    <p>Data-Driven Research on Environment and AI Modelling</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="research.html" class="active"><i class="fas fa-book"></i> Research</a></li>
+                    <li><a href="project.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="people.html"><i class="fas fa-users"></i> People</a></li>
+                    <li><a href="index.html#supervisor"><i class="fas fa-user-tie"></i> Supervisor</a></li>
+                    <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Research Hero -->
+    <section class="research-hero">
+        <div class="container research-hero-content">
+            <h2>Research Publications</h2>
+            <p>Exploring environmental challenges through data-driven approaches</p>
+        </div>
+    </section>
+
+    <!-- Research Publications -->
+    <section class="research-container">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Research Publications</h2>
+            </div>
+            
+            <div class="research-stats">
+                <h3>Research Impact at a Glance</h3>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">35+</div>
+                        <div class="stat-label">Publications</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Citations</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Research Areas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Collaborations</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="publication-list">
+                <!-- Publication 1 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Modeling the relationship between land use/land cover and land surface temperature in Dhaka, Bangladesh using CA-ANN algorithm</h3>
+                    <p class="publication-authors">AA Kafy, NN Dey, A Al Rakib, ZA Rahaman, NMR Nasher, A Bhatt</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Environmental Challenges <span class="publication-year">2021</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">120</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 2 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Monitoring the effects of vegetation cover losses on land surface temperature dynamics using geospatial approach in Rajshahi City, Bangladesh</h3>
+                    <p class="publication-authors">AA Kafy, A Al Rakib, KS Akter, ZA Rahaman, S Mallik, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Environmental Challenges <span class="publication-year">2021</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">67</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 3 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Groundwater geochemistry and hydrogeochemical processes in the Lower Ganges-Brahmaputra-Meghna River Basin areas, Bangladesh</h3>
+                    <p class="publication-authors">NMR Nasher, MH Ahmed</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Journal of Asian Earth Sciences: X <span class="publication-year">2021</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">39</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 4 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Maximum and minimum temperature trends variation over northern and southern part of Bangladesh</h3>
+                    <p class="publication-authors">NMR Nasher, MN Uddin</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Journal of Environmental Science and Natural Resources <span class="publication-year">2013</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">34</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 5 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Application of modified managed aquifer recharge model for groundwater management in drought-prone water-stressed Barind Tract, Bangladesh</h3>
+                    <p class="publication-authors">MI Hossain, MN Bari, SU Miah, AA Kafy, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Environmental Challenges <span class="publication-year">2021</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">24</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 6 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Identification of groundwater potential zone using geospatial techniques of agriculture dominated area in Dinajpur district, Bangladesh</h3>
+                    <p class="publication-authors">MMSP Rana, MA Hossain, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Environmental Challenges <span class="publication-year">2022</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">23</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 7 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Quantifying forest land-use changes using remote-sensing and CA-ANN model of Madhupur Sal Forests, Bangladesh</h3>
+                    <p class="publication-authors">MY Islam, NMR Nasher, KHR Karim, KJ Rashid</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Heliyon <span class="publication-year">2023</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">15</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 8 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Spatio-temporal variation of cyclone intensity over the coastal region of Bangladesh using 134 years track analysis</h3>
+                    <p class="publication-authors">MYI NM RefatNasher, KH RazimulKarim</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Tropical Cyclone Research and Review <span class="publication-year">2022</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">9</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 9 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Groundwater quality of arsenic contaminated aquifers in the Munshiganj district, Bangladesh using water quality index</h3>
+                    <p class="publication-authors">NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">HydroResearch <span class="publication-year">2022</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">8</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 10 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Hybrid deep learning models for multi-ahead river water level forecasting</h3>
+                    <p class="publication-authors">A Kashem, P Das, MM Hasan, R Karim, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Earth Science Informatics <span class="publication-year">2024</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">7</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 11 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Impact of climate variability on temperature and rainfall trend in Bangladesh: a case of two cities</h3>
+                    <p class="publication-authors">NR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">European Journal of Climate Change <span class="publication-year">2013</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">7</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 12 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Soil erodibility mapping of hilly watershed using analytical hierarchy process and geographical information system: A case of Chittagong hill tract, Bangladesh</h3>
+                    <p class="publication-authors">R Zumara, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Heliyon <span class="publication-year">2024</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">6</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 13 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Predictive landslide susceptibility modeling in the southeastern hilly region of Bangladesh: application of machine learning algorithms in Khagrachari district</h3>
+                    <p class="publication-authors">MM Hasan, SK Roy, MD Talha, MT Ferdous, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Environmental Science and Pollution Research <span class="publication-year">2024</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">4</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 14 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Forecasting hourly ozone concentration using functional time series model—A case study in the coastal area of bangladesh</h3>
+                    <p class="publication-authors">A Rahman, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Environmental Modeling & Assessment <span class="publication-year">2024</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">4</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 15 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">COVID-19 lockdown effects on water turbidity of a highly polluted lake in Dhaka city, Bangladesh</h3>
+                    <p class="publication-authors">NMR Nasher, MY Islam</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">National Geographical Journal of India <span class="publication-year">2022</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">4</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 16 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Assessing the performance of machine learning and analytical hierarchy process (AHP) models for rainwater harvesting potential zone identification in hilly region, Bangladesh</h3>
+                    <p class="publication-authors">NMRN Md. Mahmudul Hasan a 1 , Md. Talha a , Most. Mitu Akter a , Md Tasim Ferdous a , NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Journal of Asian Earth Sciences X <span class="publication-year">2025</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">3</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 17 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Greening and browning trend with physio-climatic drivers in Chattogram division, Bangladesh</h3>
+                    <p class="publication-authors">KJ Rashid, RD Tuli, NMR Nasher, T Akter, KHR Karim, MM Hasan</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Environment, Development and Sustainability <span class="publication-year">2024</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">2</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 18 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Geochemical study of major and trace elements in the arsenic contaminated groundwaters in Bangladesh</h3>
+                    <p class="publication-authors">Y Asagoe, Y Terakado, K Kishibe, NM Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">神戸大学大学院人間発達環境学研究科研究紀要 <span class="publication-year">2017</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">2</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 19 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Preliminary report on arsenic and some related components in tube-well waters from the high and low arsenic groundwater areas near Dhaka, Bangladesh</h3>
+                    <p class="publication-authors">Y Terakado, Y Asagoe, T Koga, NM Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">神戸大学大学院人間発達環境学研究科研究紀要 <span class="publication-year">2015</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">2</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 20 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Exploring the cooling benefits of Urban Lakes: A multi-year analysis of Dhaka, Bangladesh</h3>
+                    <p class="publication-authors">MI Hosen, MM Hasan, MD Talha, MM Akter, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">HydroResearch <span class="publication-year">2025</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">1</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 21 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Assessing household resilience to climate extremes using indicator-based index in hazard-prone areas; evidence from Bangladesh</h3>
+                    <p class="publication-authors">MM Akter, MI Hosen, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Environmental Challenges <span class="publication-year">2024</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">1</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 22 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Sources of some major and minor elements in arsenic-rich groundwaters of Bangladesh</h3>
+                    <p class="publication-authors">NM Nasher, Y Terakado</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">神戸大学大学院人間発達環境学研究科研究紀要 <span class="publication-year">2019</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">1</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 23 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Spatio-temporal Analysis of Maximum and Minimum Temperature in Bangladesh</h3>
+                    <p class="publication-authors">MN Uddin, MSA Mondal, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Journal of Environmental Science and Natural Resources <span class="publication-year">2014</span></span>
+                        <span class="publication-citations">Citations: <span class="citation-count">1</span></span>
+                    </div>
+                </div>
+                
+                <!-- Publication 24 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Analyzing Ecological Environmental Quality Trends in Dhaka Through Remote Sensing Based Ecological Index (RSEI)</h3>
+                    <p class="publication-authors">MM Hasan, MT Ferdous, M Talha, P Mojumder, SK Roy, MNF Zim, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Land <span class="publication-year">2025</span></span>
+                        <span class="publication-citations">In Press</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 25 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Climate change impact on food security: Household-level adaptation barriers to Charland community in Bangladesh</h3>
+                    <p class="publication-authors">MM Akter, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">World Development Perspectives <span class="publication-year">2025</span></span>
+                        <span class="publication-citations">In Press</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 26 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Riverbank Erosion-Accretion and Land Use Changes Using Geo-Spatial and Machine Learning Technique of Teesta River, Bangladesh</h3>
+                    <p class="publication-authors">MM Akter, NM Refat Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Advanced GIScience in Hydro-Geological Hazards: Applications, Modelling and ... <span class="publication-year">2025</span></span>
+                        <span class="publication-citations">Book Chapter</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 27 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Assessing climate change vulnerability in riparian communities: A case study from the Teesta-Jamuna river basin, Bangladesh</h3>
+                    <p class="publication-authors">MMANMR nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">National Geographical Journal of India <span class="publication-year">2024</span></span>
+                        <span class="publication-citations">In Press</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 28 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Landslide Susceptibility Mapping Using Multi-criteria Decision-Making Methods in Sylhet Division</h3>
+                    <p class="publication-authors">M Talha, MM Hasan, NM Refat Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Landslides in the Himalayan Region: Risk Assessment and Mitigation Strategy ... <span class="publication-year">2024</span></span>
+                        <span class="publication-citations">Book Chapter</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 29 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Hypsometric analysis for determining erosion susceptibility of Karnaphuli Watershed, Bangladesh, using remote sensing and GIScience</h3>
+                    <p class="publication-authors">R Zumara, NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Modern Cartography Series <span class="publication-year">2024</span></span>
+                        <span class="publication-citations">Book Chapter</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 30 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Urban expansion and land use changes of a fringe area in the southern part of Dhaka city (Bangladesh) using geo-spatial techniques</h3>
+                    <p class="publication-authors">RRNMR Nasher*</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">The journal of Indian Geophysical Union <span class="publication-year">2023</span></span>
+                        <span class="publication-citations">27 (3), 462-475</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 31 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Knowledge, attitudes and practices (KAP) regarding COVID-19 management among indigenous people in Bangladesh</h3>
+                    <p class="publication-authors">NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">National Geographical Journal of India <span class="publication-year">2023</span></span>
+                        <span class="publication-citations">69 (2)</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 32 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Hydrogeochemical investigations of arsenic-rich groundwater using multivariate statistical analysis</h3>
+                    <p class="publication-authors">NMR Nasher, SZ Emon</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">J. Ind. Geophys. Union <span class="publication-year">2022</span></span>
+                        <span class="publication-citations">26, 3</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 33 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Atmospheric ozone pollution dependency on meteorological parameters</h3>
+                    <p class="publication-authors">ARAS N. M. Refat Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">J. Ind. Geophys. Union <span class="publication-year">2022</span></span>
+                        <span class="publication-citations">26 (2), 108-119</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 34 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Temperature Scenarios in Cities: temperature Trends in Cities of bangladesh</h3>
+                    <p class="publication-authors">NMRNAR M. Shahjahan Mondal</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Jahangirnagar University Journal of Science <span class="publication-year">2015</span></span>
+                        <span class="publication-citations">38 (1), 75-93</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 35 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">バングラデシュにおける高濃度ヒ素汚染地下水の地球化学的研究</h3>
+                    <p class="publication-authors">浅越佑馬， 寺門靖高， 岸部克也</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">日本地球化学会年会要旨集 <span class="publication-year">2015</span></span>
+                        <span class="publication-citations">2015 年度日本地球化学会第 62 回年会講演要旨集, 298</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 36 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Trends analysis of monthly temperature by Mann-kendal test: a case study of three cities in bangladesh</h3>
+                    <p class="publication-authors">NMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">AJSE <span class="publication-year">2014</span></span>
+                        <span class="publication-citations">13 (1), 113-118</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 37 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">Assessing rainfall Prediction Model Using Artificial Neural Network</h3>
+                    <p class="publication-authors">ADMB N M Refat Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">UITS Journal <span class="publication-year">2014</span></span>
+                        <span class="publication-citations">3 (3), 50-59</span>
+                    </div>
+                </div>
+                
+                <!-- Publication 38 -->
+                <div class="publication-item">
+                    <h3 class="publication-title">An Assessment of River Quality Parameters: A case of Jamuna River</h3>
+                    <p class="publication-authors">MNUNMR Nasher</p>
+                    <div class="publication-details">
+                        <span class="publication-journal">Technical Journal, RRI, bangladesh <span class="publication-year">2014</span></span>
+                        <span class="publication-citations">12 (2), 113-126</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DREAM Lab</h3>
+                    <p>Data-Driven Research on Environment and AI Modelling</p>
+                    <p>Advancing environmental science through innovative research and AI applications for a sustainable future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-researchgate"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="index.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="research.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Research</a></li>
+                        <li><a href="project.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="people.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> People</a></li>
+                        <li><a href="index.html#supervisor" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Supervisor</a></li>
+                        <li><a href="index.html#contact" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Department of Geography and Environment, Jagannath University, Dhaka 1100, Bangladesh</p>
+                    <p><i class="fas fa-envelope"></i> dreamlabjnu@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +880 2 XXXX XXXX</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DREAM Lab, Jagannath University. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll for publication items
+        window.addEventListener('scroll', function() {
+            const items = document.querySelectorAll('.publication-item');
+            const windowHeight = window.innerHeight;
+            
+            items.forEach(item => {
+                const itemPosition = item.getBoundingClientRect().top;
+                if (itemPosition < windowHeight - 50) {
+                    item.style.opacity = 1;
+                    item.style.transform = 'translateX(0)';
+                }
+            });
+        });
+        
+        // Initialize item positions for animation
+        document.querySelectorAll('.publication-item').forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        // Trigger initial animation
+        setTimeout(() => {
+            window.dispatchEvent(new Event('scroll'));
+        }, 500);
+    </script>
+</body>
+</html> 
