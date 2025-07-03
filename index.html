@@ -932,7 +932,12 @@
                 </div>
                 <div class="contact-form">
                     <h3>Send Us a Message</h3>
-                    <form id="collaborationForm">
+                    <form id="collaborationForm" action="https://formsubmit.co/dreamlabjnu@gmail.com" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="New Collaboration Inquiry from DREAM Lab Website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                        
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required>
@@ -1036,32 +1041,14 @@
     </footer>
 
     <script>
-        // Form submission handling
+        // Form submission handling with FormSubmit.co
         document.getElementById('collaborationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
+            // Show success message immediately
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const affiliation = document.getElementById('affiliation').value;
-            const interest = document.getElementById('interest').value;
-            const message = document.getElementById('message').value;
-            
-            // Create email content
-            const subject = `Collaboration Inquiry from ${name}`;
-            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AAffiliation: ${affiliation}%0D%0AArea of Interest: ${interest}%0D%0AMessage: ${message}`;
-            
-            // Create mailto link
-            const mailtoLink = `mailto:dreamlabjnu@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
             alert(`Thank you ${name}! Your inquiry has been submitted. We'll contact you at ${email} shortly.`);
             
-            // Reset form
-            this.reset();
+            // The form will submit to FormSubmit.co automatically
         });
         
         // Smooth scrolling for navigation
