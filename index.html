@@ -28,6 +28,7 @@
             color: var(--text);
             background-color: var(--background);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4 {
@@ -83,7 +84,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 15px;
         }
         
         nav a {
@@ -339,6 +340,61 @@
             font-style: italic;
         }
         
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(to right, var(--light), #fff);
+            text-align: center;
+        }
+        
+        .team-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .team-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            width: 150px;
+            text-align: center;
+        }
+        
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 3px solid var(--accent);
+        }
+        
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .member-role {
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+        
         /* Contact Section */
         .contact {
             background: linear-gradient(to right, var(--light), #fff);
@@ -557,7 +613,8 @@
             }
             
             nav ul {
-                gap: 15px;
+                gap: 10px;
+                font-size: 0.9rem;
             }
         }
         
@@ -583,6 +640,10 @@
             section {
                 padding: 60px 0;
             }
+            
+            .team-members {
+                gap: 20px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -592,6 +653,14 @@
             
             .section-title h2 {
                 font-size: 2rem;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
             }
         }
     </style>
@@ -613,6 +682,7 @@
                 <ul>
                     <li><a href="#about"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="research.html"><i class="fas fa-book"></i> Research</a></li>
+                    <li><a href="project.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
                     <li><a href="people.html"><i class="fas fa-users"></i> People</a></li>
                     <li><a href="#supervisor"><i class="fas fa-user-tie"></i> Supervisor</a></li>
                     <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
@@ -766,6 +836,50 @@
         </div>
     </section>
 
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+            </div>
+            <div class="team-content">
+                <p>Our lab is comprised of dedicated researchers, graduate students, and collaborators who are passionate about using data science and AI to solve environmental challenges. Meet the talented individuals driving our research forward.</p>
+                <a href="people.html" class="cta-button">View Full Team</a>
+                
+                <div class="team-members">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Researcher">
+                        </div>
+                        <div class="member-name">Ayesha Rahman</div>
+                        <div class="member-role">Research Scientist</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Researcher">
+                        </div>
+                        <div class="member-name">Farhan Ahmed</div>
+                        <div class="member-role">ML Engineer</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Researcher">
+                        </div>
+                        <div class="member-name">Tasnim Khan</div>
+                        <div class="member-role">Environmental Analyst</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Researcher">
+                        </div>
+                        <div class="member-name">Rahim Hossain</div>
+                        <div class="member-role">Data Scientist</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -902,6 +1016,7 @@
                     <ul style="list-style: none;">
                         <li><a href="#about" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> About Us</a></li>
                         <li><a href="research.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Research</a></li>
+                        <li><a href="project.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Projects</a></li>
                         <li><a href="people.html" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> People</a></li>
                         <li><a href="#supervisor" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Supervisor</a></li>
                         <li><a href="#contact" style="color: white; text-decoration: none; display: block; margin-bottom: 10px; opacity: 0.8;"><i class="fas fa-chevron-right"></i> Contact</a></li>
@@ -966,7 +1081,7 @@
         
         // Animation on scroll
         window.addEventListener('scroll', function() {
-            const cards = document.querySelectorAll('.card, .research-item, .partner-card');
+            const cards = document.querySelectorAll('.card, .research-item, .partner-card, .team-member');
             const windowHeight = window.innerHeight;
             
             cards.forEach(card => {
@@ -979,7 +1094,7 @@
         });
         
         // Initialize card positions for animation
-        document.querySelectorAll('.card, .research-item, .partner-card').forEach(item => {
+        document.querySelectorAll('.card, .research-item, .partner-card, .team-member').forEach(item => {
             item.style.opacity = 0;
             item.style.transform = 'translateY(20px)';
             item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
