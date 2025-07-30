@@ -340,9 +340,10 @@
             font-style: italic;
         }
         
-        /* Notice Board Section */
+        /* Notice Board Section - Fixed */
         .notice-board {
             flex: 1;
+            min-width: 380px; /* Increased width */
             background: white;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -369,7 +370,7 @@
         .notice-scroller {
             position: absolute;
             width: 100%;
-            animation: scrollUp 50s linear infinite;
+            animation: scrollUp 60s linear infinite;
         }
         
         .notice-item {
@@ -407,7 +408,7 @@
         }
         
         .notice-date {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #777;
             margin-bottom: 5px;
             display: flex;
@@ -449,7 +450,7 @@
                 transform: translateY(0);
             }
             100% {
-                transform: translateY(-80%);
+                transform: translateY(-65%);
             }
         }
         
@@ -721,6 +722,16 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 1100px) {
+            .supervisor-container {
+                flex-direction: column;
+            }
+            
+            .notice-board {
+                margin-top: 40px;
+            }
+        }
+        
         @media (max-width: 900px) {
             .about-content {
                 flex-direction: column;
@@ -733,14 +744,6 @@
             nav ul {
                 gap: 10px;
                 font-size: 0.9rem;
-            }
-            
-            .supervisor-container {
-                flex-direction: column;
-            }
-            
-            .notice-board {
-                margin-top: 40px;
             }
         }
         
@@ -787,6 +790,10 @@
             
             .footer-content {
                 flex-direction: column;
+            }
+            
+            .notice-board {
+                min-width: 100%;
             }
         }
     </style>
@@ -965,7 +972,7 @@
                     <p><a href="https://jnu.ac.bd/fm/pview/10311" target="_blank" class="cta-button" style="display: inline-block; padding: 10px 25px; margin-top: 15px;">View Faculty Profile</a></p>
                 </div>
                 
-                <!-- Notice Board -->
+                <!-- Notice Board - Fixed -->
                 <div class="notice-board">
                     <div class="notice-header">
                         <i class="fas fa-bullhorn"></i> News & Notices
@@ -989,8 +996,8 @@
                                 <div class="notice-date">
                                     <i class="fas fa-calendar-alt"></i> June 10, 2025
                                 </div>
-                                <div class="notice-title">Dhaka's Ecological Environment is Degrading Day by Day</div>
-                                <p>New research highlights the alarming degradation of Dhaka's ecological environment and its implications.</p>
+                                <div class="notice-title">Dhaka's Ecological Environment is Degrading</div>
+                                <p>New research highlights the alarming degradation of Dhaka's ecological environment and its implications for urban sustainability.</p>
                                 <a href="https://www.mdpi.com/2073-445X/14/6/1258#" target="_blank" class="notice-link">
                                     Read Article <i class="fas fa-external-link-alt"></i>
                                 </a>
@@ -1001,7 +1008,7 @@
                                 <div class="notice-date">
                                     <i class="fas fa-calendar-alt"></i> June 5, 2025
                                 </div>
-                                <div class="notice-title">New Article Published on Rainwater Harvesting</div>
+                                <div class="notice-title">Rainwater Harvesting Potential Sites</div>
                                 <p>Our latest research on potential site selection for rainwater harvesting systems has been published.</p>
                                 <a href="https://doi.org/10.1016/j.jaesx.2024.100189" target="_blank" class="notice-link">
                                     View Publication <i class="fas fa-external-link-alt"></i>
@@ -1013,7 +1020,7 @@
                                 <div class="notice-date">
                                     <i class="fas fa-calendar-alt"></i> May 30, 2025
                                 </div>
-                                <div class="notice-title">New Article on Cooling Benefits of Urban Lakes</div>
+                                <div class="notice-title">Cooling Benefits of Urban Lakes</div>
                                 <p>Research on the cooling benefits of urban lakes in metropolitan areas published in Hydrology Research.</p>
                                 <a href="https://doi.org/10.1016/j.hydres.2025.01.001" target="_blank" class="notice-link">
                                     Read Study <i class="fas fa-external-link-alt"></i>
@@ -1034,8 +1041,8 @@
                                 <div class="notice-date">
                                     <i class="fas fa-calendar-alt"></i> May 20, 2025
                                 </div>
-                                <div class="notice-title">AI Models Predict Flood Risks with 95% Accuracy</div>
-                                <p>Our team's new AI model accurately predicts flood risks in vulnerable regions.</p>
+                                <div class="notice-title">AI Models Predict Flood Risks</div>
+                                <p>Our team's new AI model accurately predicts flood risks in vulnerable regions with unprecedented accuracy.</p>
                                 <a href="#" class="notice-link">
                                     Learn More <i class="fas fa-external-link-alt"></i>
                                 </a>
@@ -1050,6 +1057,42 @@
                                 <p>Join us on June 10th for a special seminar on AI applications in climate change research.</p>
                                 <a href="#" class="notice-link">
                                     Register Now <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <!-- News 5 -->
+                            <div class="notice-item news">
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> May 10, 2025
+                                </div>
+                                <div class="notice-title">DREAM Lab Partners with NASA</div>
+                                <p>We're excited to announce our new partnership with NASA to study climate patterns using satellite data and AI.</p>
+                                <a href="#" class="notice-link">
+                                    Read Announcement <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <!-- Notice 4 -->
+                            <div class="notice-item notice">
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> May 5, 2025
+                                </div>
+                                <div class="notice-title">Summer Internship Program</div>
+                                <p>Applications are now open for our summer internship program. Gain hands-on experience in environmental AI research.</p>
+                                <a href="#" class="notice-link">
+                                    Apply Now <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <!-- News 6 -->
+                            <div class="notice-item news">
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> April 28, 2025
+                                </div>
+                                <div class="notice-title">Forest Fire Detection System</div>
+                                <p>Our researchers have developed an AI-powered early detection system for forest fires that reduces response time by 40%.</p>
+                                <a href="#" class="notice-link">
+                                    Read Details <i class="fas fa-external-link-alt"></i>
                                 </a>
                             </div>
                         </div>
