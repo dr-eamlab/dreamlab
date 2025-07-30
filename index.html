@@ -300,13 +300,13 @@
         }
         
         /* Supervisor Section */
-        .supervisor {
-            text-align: center;
+        .supervisor-container {
+            display: flex;
+            gap: 40px;
         }
         
         .supervisor-content {
-            max-width: 800px;
-            margin: 0 auto;
+            flex: 2;
             background: white;
             border-radius: 15px;
             padding: 40px;
@@ -338,6 +338,124 @@
         .supervisor-content p {
             margin-bottom: 20px;
             font-style: italic;
+        }
+        
+        /* Notice Board Section */
+        .notice-board {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .notice-header {
+            background: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .notice-container {
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .notice-scroller {
+            position: absolute;
+            width: 100%;
+            animation: scrollUp 50s linear infinite;
+        }
+        
+        .notice-item {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            background: var(--light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .notice-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: #d8f0d8;
+        }
+        
+        .notice-item:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--accent);
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .notice-item.notice {
+            border-left: 5px solid #1a5d1a;
+        }
+        
+        .notice-item.news {
+            border-left: 5px solid #2e8540;
+        }
+        
+        .notice-date {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .notice-date i {
+            color: var(--accent);
+        }
+        
+        .notice-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .notice-link {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+        
+        .notice-link:hover {
+            text-decoration: underline;
+        }
+        
+        .notice-link i {
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
+        
+        @keyframes scrollUp {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-80%);
+            }
+        }
+        
+        /* Pause animation on hover */
+        .notice-container:hover .notice-scroller {
+            animation-play-state: paused;
         }
         
         /* Team Section */
@@ -616,6 +734,14 @@
                 gap: 10px;
                 font-size: 0.9rem;
             }
+            
+            .supervisor-container {
+                flex-direction: column;
+            }
+            
+            .notice-board {
+                margin-top: 40px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -817,29 +943,118 @@
         </div>
     </section>
 
-    <!-- Supervisor Section -->
+    <!-- Supervisor Section with Notice Board -->
     <section class="supervisor" id="supervisor">
         <div class="container">
             <div class="section-title">
-                <h2>Lab Supervisor</h2>
+                <h2>Lab Supervisor & News</h2>
             </div>
-            <div class="supervisor-content">
-                <div class="supervisor-img">
-                    <img src="https://jrp.jnu.ac.bd/emp_pics_nids/photo_10311.jpg" alt="Dr. N M Refat Nasher">
+            <div class="supervisor-container">
+                <div class="supervisor-content">
+                    <div class="supervisor-img">
+                        <img src="https://jrp.jnu.ac.bd/emp_pics_nids/photo_10311.jpg" alt="Dr. N M Refat Nasher">
+                    </div>
+                    <h3>Dr. N M Refat Nasher</h3>
+                    <p>Professor & Lab Supervisor</p>
+                    <p>Department of Geography and Environment, Jagannath University</p>
+                    <p>Dr. N M Refat Nasher is an Associate Professor in the Department of Geography & Environment at Jagannath University, Dhaka, Bangladesh. He holds a Ph.D. in Human Environmental Science from Kobe University, Japan, and both M.Sc. and B.Sc. degrees in Geography & Environment from the University of Dhaka.</p>
+                    <p>Dr. Nasher’s interdisciplinary research spans the fields of Geographic Information Systems (GIS), Remote Sensing, hydro-geochemistry, environmental risk assessment, and climate change impact studies. His work focuses particularly on environmental monitoring and water resource management in vulnerable ecosystems across South Asia.</p>
+                    <p>With over 25 peer-reviewed publications to his name, Dr. Nasher has made notable contributions to remote sensing-based ecological assessment, including pioneering work on the Remote Sensing Ecological Index (RSEI) in urban settings, satellite-derived drought analysis, and the application of AI and deep learning for river flow forecasting. His current research investigates water use efficiency and drought dynamics using MODIS time-series data, and he has led studies on creek water contamination in the Chittagong Hill Tracts and heavy metal pollution in urban lakes.</p>
+                    <p>In addition to his research, Dr. Nasher serves as a dedicated mentor, supervising MSc and BSc theses in environmental science and GIS. He is also an adjunct faculty member at Bangladesh University of Professionals (BUP) and East West University, contributing to graduate-level teaching and collaborative research.</p>
+                    <p>Dr. Nasher's work supports the advancement of data-driven environmental planning and sustainable resource management in the context of climate change. His scholarly efforts continue to inform national policy, improve urban ecological resilience, and promote scientific innovation through cross-disciplinary research and education</p>
+                    <p><a href="https://jnu.ac.bd/fm/pview/10311" target="_blank" class="cta-button" style="display: inline-block; padding: 10px 25px; margin-top: 15px;">View Faculty Profile</a></p>
                 </div>
-                <h3>Dr. N M Refat Nasher</h3>
-                <p>Professor & Lab Supervisor</p>
-                <p>Department of Geography and Environment, Jagannath University</p>
-                <p>Dr. N M Refat Nasher is an Associate Professor in the Department of Geography & Environment at Jagannath University, Dhaka, Bangladesh. He holds a Ph.D. in Human Environmental Science from Kobe University, Japan, and both M.Sc. and B.Sc. degrees in Geography & Environment from the University of Dhaka.
-
-Dr. Nasher’s interdisciplinary research spans the fields of Geographic Information Systems (GIS), Remote Sensing, hydro-geochemistry, environmental risk assessment, and climate change impact studies. His work focuses particularly on environmental monitoring and water resource management in vulnerable ecosystems across South Asia.
-
-With over 25 peer-reviewed publications to his name, Dr. Nasher has made notable contributions to remote sensing-based ecological assessment, including pioneering work on the Remote Sensing Ecological Index (RSEI) in urban settings, satellite-derived drought analysis, and the application of AI and deep learning for river flow forecasting. His current research investigates water use efficiency and drought dynamics using MODIS time-series data, and he has led studies on creek water contamination in the Chittagong Hill Tracts and heavy metal pollution in urban lakes.
-
-In addition to his research, Dr. Nasher serves as a dedicated mentor, supervising MSc and BSc theses in environmental science and GIS. He is also an adjunct faculty member at Bangladesh University of Professionals (BUP) and East West University, contributing to graduate-level teaching and collaborative research.
-
-Dr. Nasher's work supports the advancement of data-driven environmental planning and sustainable resource management in the context of climate change. His scholarly efforts continue to inform national policy, improve urban ecological resilience, and promote scientific innovation through cross-disciplinary research and education</p>
-                <p><a href="https://jnu.ac.bd/fm/pview/10311" target="_blank" class="cta-button" style="display: inline-block; padding: 10px 25px; margin-top: 15px;">View Faculty Profile</a></p>
+                
+                <!-- Notice Board -->
+                <div class="notice-board">
+                    <div class="notice-header">
+                        <i class="fas fa-bullhorn"></i> News & Notices
+                    </div>
+                    <div class="notice-container">
+                        <div class="notice-scroller">
+                            <!-- Notice 1 -->
+                            <div class="notice-item notice">
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> June 15, 2025
+                                </div>
+                                <div class="notice-title">Recruitment Notice</div>
+                                <p>We are looking for passionate researchers to join our team. Apply now for research positions in environmental AI modeling.</p>
+                                <a href="recruitment.pdf" target="_blank" class="notice-link">
+                                    View Details <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <!-- News 1 -->
+                            <div class="notice-item news">
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> June 10, 2025
+                                </div>
+                                <div class="notice-title">Dhaka's Ecological Environment is Degrading Day by Day</div>
+                                <p>New research highlights the alarming degradation of Dhaka's ecological environment and its implications.</p>
+                                <a href="https://www.mdpi.com/2073-445X/14/6/1258#" target="_blank" class="notice-link">
+                                    Read Article <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <!-- News 2 -->
+                            <div class="notice-item news">
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> June 5, 2025
+                                </div>
+                                <div class="notice-title">New Article Published on Rainwater Harvesting</div>
+                                <p>Our latest research on potential site selection for rainwater harvesting systems has been published.</p>
+                                <a href="https://doi.org/10.1016/j.jaesx.2024.100189" target="_blank" class="notice-link">
+                                    View Publication <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <!-- News 3 -->
+                            <div class="notice-item news">
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> May 30, 2025
+                                </div>
+                                <div class="notice-title">New Article on Cooling Benefits of Urban Lakes</div>
+                                <p>Research on the cooling benefits of urban lakes in metropolitan areas published in Hydrology Research.</p>
+                                <a href="https://doi.org/10.1016/j.hydres.2025.01.001" target="_blank" class="notice-link">
+                                    Read Study <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <!-- Notice 2 -->
+                            <div class="notice-item notice">
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> May 25, 2025
+                                </div>
+                                <div class="notice-title">Lab Maintenance Notice</div>
+                                <p>The lab will be closed for maintenance on June 1st. Please plan your work accordingly.</p>
+                            </div>
+                            
+                            <!-- News 4 -->
+                            <div class="notice-item news">
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> May 20, 2025
+                                </div>
+                                <div class="notice-title">AI Models Predict Flood Risks with 95% Accuracy</div>
+                                <p>Our team's new AI model accurately predicts flood risks in vulnerable regions.</p>
+                                <a href="#" class="notice-link">
+                                    Learn More <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <!-- Notice 3 -->
+                            <div class="notice-item notice">
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> May 15, 2025
+                                </div>
+                                <div class="notice-title">Upcoming Seminar: Climate Change & AI</div>
+                                <p>Join us on June 10th for a special seminar on AI applications in climate change research.</p>
+                                <a href="#" class="notice-link">
+                                    Register Now <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1060,33 +1275,6 @@ Dr. Nasher's work supports the advancement of data-driven environmental planning
             
             // Reset form
             this.reset();
-            
-            // In a real implementation, you would send this data to a server
-            // Here's how it would work:
-            /*
-            fetch('YOUR_SERVER_ENDPOINT', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    affiliation: affiliation,
-                    interest: interest,
-                    message: message
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Message sent successfully!');
-                document.getElementById('contactForm').reset();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was a problem sending your message. Please try again later.');
-            });
-            */
         });
         
         // Smooth scrolling for navigation
