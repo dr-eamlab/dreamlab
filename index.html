@@ -340,15 +340,17 @@
             font-style: italic;
         }
         
-        /* Notice Board Section - Fixed */
+        /* Enhanced Notice Board Section */
         .notice-board {
             flex: 1;
-            min-width: 380px; /* Increased width */
+            min-width: 420px; /* Increased width */
             background: white;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: hidden;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         
         .notice-header {
@@ -356,8 +358,12 @@
             color: white;
             padding: 15px 20px;
             text-align: center;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .notice-container {
@@ -370,16 +376,18 @@
         .notice-scroller {
             position: absolute;
             width: 100%;
-            animation: scrollUp 60s linear infinite;
+            animation: scrollUp 70s linear infinite;
         }
         
         .notice-item {
-            padding: 15px;
-            margin: 15px 0;
+            padding: 18px;
+            margin: 0 0 20px 0;
             border-radius: 8px;
             background: var(--light);
             transition: all 0.3s ease;
             position: relative;
+            border-left: 5px solid transparent;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
         
         .notice-item:hover {
@@ -388,29 +396,38 @@
             background: #d8f0d8;
         }
         
-        .notice-item:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 5px;
-            background: var(--accent);
-            border-radius: 8px 0 0 8px;
-        }
-        
         .notice-item.notice {
-            border-left: 5px solid #1a5d1a;
+            border-left-color: #1a5d1a;
         }
         
         .notice-item.news {
-            border-left: 5px solid #2e8540;
+            border-left-color: #2e8540;
+        }
+        
+        .notice-type {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        
+        .notice-item.notice .notice-type {
+            background: #1a5d1a;
+            color: white;
+        }
+        
+        .notice-item.news .notice-type {
+            background: #2e8540;
+            color: white;
         }
         
         .notice-date {
             font-size: 0.85rem;
-            color: #777;
-            margin-bottom: 5px;
+            color: #555;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 5px;
@@ -422,21 +439,31 @@
         
         .notice-title {
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: var(--dark);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            padding-right: 60px;
+        }
+        
+        .notice-desc {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            line-height: 1.5;
         }
         
         .notice-link {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9rem;
-            margin-top: 8px;
+            font-size: 0.95rem;
+            margin-top: 5px;
+            transition: all 0.3s ease;
         }
         
         .notice-link:hover {
+            color: var(--secondary);
             text-decoration: underline;
         }
         
@@ -450,7 +477,7 @@
                 transform: translateY(0);
             }
             100% {
-                transform: translateY(-65%);
+                transform: translateY(-55%);
             }
         }
         
@@ -729,6 +756,7 @@
             
             .notice-board {
                 margin-top: 40px;
+                min-width: 100%;
             }
         }
         
@@ -773,6 +801,10 @@
             .team-members {
                 gap: 20px;
             }
+            
+            .notice-board {
+                min-width: 100%;
+            }
         }
         
         @media (max-width: 480px) {
@@ -794,6 +826,8 @@
             
             .notice-board {
                 min-width: 100%;
+            height: auto;
+                max-height: 500px;
             }
         }
     </style>
@@ -950,7 +984,7 @@
         </div>
     </section>
 
-    <!-- Supervisor Section with Notice Board -->
+    <!-- Supervisor Section with Enhanced Notice Board -->
     <section class="supervisor" id="supervisor">
         <div class="container">
             <div class="section-title">
@@ -972,7 +1006,7 @@
                     <p><a href="https://jnu.ac.bd/fm/pview/10311" target="_blank" class="cta-button" style="display: inline-block; padding: 10px 25px; margin-top: 15px;">View Faculty Profile</a></p>
                 </div>
                 
-                <!-- Notice Board - Fixed -->
+                <!-- Enhanced Notice Board -->
                 <div class="notice-board">
                     <div class="notice-header">
                         <i class="fas fa-bullhorn"></i> News & Notices
@@ -981,35 +1015,38 @@
                         <div class="notice-scroller">
                             <!-- Notice 1 -->
                             <div class="notice-item notice">
+                                <div class="notice-type">Notice</div>
                                 <div class="notice-date">
                                     <i class="fas fa-calendar-alt"></i> June 15, 2025
                                 </div>
-                                <div class="notice-title">Recruitment Notice</div>
-                                <p>We are looking for passionate researchers to join our team. Apply now for research positions in environmental AI modeling.</p>
+                                <div class="notice-title">Research Assistant Recruitment</div>
+                                <div class="notice-desc">We're hiring research assistants for environmental AI projects. Join our innovative team!</div>
                                 <a href="recruitment.pdf" target="_blank" class="notice-link">
-                                    View Details <i class="fas fa-external-link-alt"></i>
+                                    Download Details <i class="fas fa-external-link-alt"></i>
                                 </a>
                             </div>
                             
                             <!-- News 1 -->
                             <div class="notice-item news">
+                                <div class="notice-type">News</div>
                                 <div class="notice-date">
-                                    <i class="fas fa-calendar-alt"></i> June 10, 2025
+                                    <i class="fas fa-calendar-alt"></i> June 12, 2025
                                 </div>
-                                <div class="notice-title">Dhaka's Ecological Environment is Degrading</div>
-                                <p>New research highlights the alarming degradation of Dhaka's ecological environment and its implications for urban sustainability.</p>
+                                <div class="notice-title">Ecological Decline in Dhaka</div>
+                                <div class="notice-desc">New study reveals alarming degradation of Dhaka's ecological environment and its implications.</div>
                                 <a href="https://www.mdpi.com/2073-445X/14/6/1258#" target="_blank" class="notice-link">
-                                    Read Article <i class="fas fa-external-link-alt"></i>
+                                    Read Full Article <i class="fas fa-external-link-alt"></i>
                                 </a>
                             </div>
                             
                             <!-- News 2 -->
                             <div class="notice-item news">
+                                <div class="notice-type">News</div>
                                 <div class="notice-date">
-                                    <i class="fas fa-calendar-alt"></i> June 5, 2025
+                                    <i class="fas fa-calendar-alt"></i> June 8, 2025
                                 </div>
-                                <div class="notice-title">Rainwater Harvesting Potential Sites</div>
-                                <p>Our latest research on potential site selection for rainwater harvesting systems has been published.</p>
+                                <div class="notice-title">Rainwater Harvesting Research</div>
+                                <div class="notice-desc">Our new article on rainwater harvesting potential site selection has been published.</div>
                                 <a href="https://doi.org/10.1016/j.jaesx.2024.100189" target="_blank" class="notice-link">
                                     View Publication <i class="fas fa-external-link-alt"></i>
                                 </a>
@@ -1017,11 +1054,12 @@
                             
                             <!-- News 3 -->
                             <div class="notice-item news">
+                                <div class="notice-type">News</div>
                                 <div class="notice-date">
-                                    <i class="fas fa-calendar-alt"></i> May 30, 2025
+                                    <i class="fas fa-calendar-alt"></i> June 5, 2025
                                 </div>
-                                <div class="notice-title">Cooling Benefits of Urban Lakes</div>
-                                <p>Research on the cooling benefits of urban lakes in metropolitan areas published in Hydrology Research.</p>
+                                <div class="notice-title">Urban Lakes Cooling Benefits</div>
+                                <div class="notice-desc">New research on cooling benefits of urban lakes published in Hydrology Research.</div>
                                 <a href="https://doi.org/10.1016/j.hydres.2025.01.001" target="_blank" class="notice-link">
                                     Read Study <i class="fas fa-external-link-alt"></i>
                                 </a>
@@ -1029,20 +1067,22 @@
                             
                             <!-- Notice 2 -->
                             <div class="notice-item notice">
+                                <div class="notice-type">Notice</div>
                                 <div class="notice-date">
-                                    <i class="fas fa-calendar-alt"></i> May 25, 2025
+                                    <i class="fas fa-calendar-alt"></i> June 1, 2025
                                 </div>
-                                <div class="notice-title">Lab Maintenance Notice</div>
-                                <p>The lab will be closed for maintenance on June 1st. Please plan your work accordingly.</p>
+                                <div class="notice-title">Lab Maintenance Schedule</div>
+                                <div class="notice-desc">The lab will be closed for maintenance on June 10-12. Please plan your work accordingly.</div>
                             </div>
                             
                             <!-- News 4 -->
                             <div class="notice-item news">
+                                <div class="notice-type">News</div>
                                 <div class="notice-date">
-                                    <i class="fas fa-calendar-alt"></i> May 20, 2025
+                                    <i class="fas fa-calendar-alt"></i> May 28, 2025
                                 </div>
-                                <div class="notice-title">AI Models Predict Flood Risks</div>
-                                <p>Our team's new AI model accurately predicts flood risks in vulnerable regions with unprecedented accuracy.</p>
+                                <div class="notice-title">AI for Flood Prediction</div>
+                                <div class="notice-desc">Our team developed an AI model that predicts flood risks with 95% accuracy in vulnerable areas.</div>
                                 <a href="#" class="notice-link">
                                     Learn More <i class="fas fa-external-link-alt"></i>
                                 </a>
@@ -1050,11 +1090,12 @@
                             
                             <!-- Notice 3 -->
                             <div class="notice-item notice">
+                                <div class="notice-type">Notice</div>
                                 <div class="notice-date">
-                                    <i class="fas fa-calendar-alt"></i> May 15, 2025
+                                    <i class="fas fa-calendar-alt"></i> May 25, 2025
                                 </div>
-                                <div class="notice-title">Upcoming Seminar: Climate Change & AI</div>
-                                <p>Join us on June 10th for a special seminar on AI applications in climate change research.</p>
+                                <div class="notice-title">Climate Change Seminar</div>
+                                <div class="notice-desc">Join our seminar on AI applications in climate change research on June 20th.</div>
                                 <a href="#" class="notice-link">
                                     Register Now <i class="fas fa-external-link-alt"></i>
                                 </a>
@@ -1062,11 +1103,12 @@
                             
                             <!-- News 5 -->
                             <div class="notice-item news">
+                                <div class="notice-type">News</div>
                                 <div class="notice-date">
-                                    <i class="fas fa-calendar-alt"></i> May 10, 2025
+                                    <i class="fas fa-calendar-alt"></i> May 20, 2025
                                 </div>
-                                <div class="notice-title">DREAM Lab Partners with NASA</div>
-                                <p>We're excited to announce our new partnership with NASA to study climate patterns using satellite data and AI.</p>
+                                <div class="notice-title">NASA Collaboration</div>
+                                <div class="notice-desc">DREAM Lab partners with NASA for climate research using satellite data and AI.</div>
                                 <a href="#" class="notice-link">
                                     Read Announcement <i class="fas fa-external-link-alt"></i>
                                 </a>
@@ -1074,11 +1116,12 @@
                             
                             <!-- Notice 4 -->
                             <div class="notice-item notice">
+                                <div class="notice-type">Notice</div>
                                 <div class="notice-date">
-                                    <i class="fas fa-calendar-alt"></i> May 5, 2025
+                                    <i class="fas fa-calendar-alt"></i> May 15, 2025
                                 </div>
-                                <div class="notice-title">Summer Internship Program</div>
-                                <p>Applications are now open for our summer internship program. Gain hands-on experience in environmental AI research.</p>
+                                <div class="notice-title">Summer Internships</div>
+                                <div class="notice-desc">Applications open for summer internships in environmental AI research.</div>
                                 <a href="#" class="notice-link">
                                     Apply Now <i class="fas fa-external-link-alt"></i>
                                 </a>
@@ -1086,14 +1129,25 @@
                             
                             <!-- News 6 -->
                             <div class="notice-item news">
+                                <div class="notice-type">News</div>
                                 <div class="notice-date">
-                                    <i class="fas fa-calendar-alt"></i> April 28, 2025
+                                    <i class="fas fa-calendar-alt"></i> May 10, 2025
                                 </div>
-                                <div class="notice-title">Forest Fire Detection System</div>
-                                <p>Our researchers have developed an AI-powered early detection system for forest fires that reduces response time by 40%.</p>
+                                <div class="notice-title">Forest Fire Detection</div>
+                                <div class="notice-desc">New AI-powered system reduces forest fire response time by 40%.</div>
                                 <a href="#" class="notice-link">
                                     Read Details <i class="fas fa-external-link-alt"></i>
                                 </a>
+                            </div>
+                            
+                            <!-- Notice 5 -->
+                            <div class="notice-item notice">
+                                <div class="notice-type">Notice</div>
+                                <div class="notice-date">
+                                    <i class="fas fa-calendar-alt"></i> May 5, 2025
+                                </div>
+                                <div class="notice-title">Lab Equipment Training</div>
+                                <div class="notice-desc">Training session on new lab equipment scheduled for May 15th at 2 PM.</div>
                             </div>
                         </div>
                     </div>
