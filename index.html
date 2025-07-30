@@ -932,12 +932,7 @@
                 </div>
                 <div class="contact-form">
                     <h3>Send Us a Message</h3>
-                    <form id="collaborationForm" action="https://formsubmit.co/dreamlabjnu@gmail.com" method="POST">
-                        <!-- FormSubmit Configuration -->
-                        <input type="hidden" name="_subject" value="New Collaboration Inquiry from DREAM Lab Website">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-                        
+                    <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required>
@@ -1041,14 +1036,49 @@
     </footer>
 
     <script>
-        // Form submission handling with FormSubmit.co
-        document.getElementById('collaborationForm').addEventListener('submit', function(e) {
-            // Show success message immediately
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const affiliation = document.getElementById('affiliation').value;
+            const interest = document.getElementById('interest').value;
+            const message = document.getElementById('message').value;
+            
+            // Show success message
             alert(`Thank you ${name}! Your inquiry has been submitted. We'll contact you at ${email} shortly.`);
             
-            // The form will submit to FormSubmit.co automatically
+            // Reset form
+            this.reset();
+            
+            // In a real implementation, you would send this data to a server
+            // Here's how it would work:
+            /*
+            fetch('YOUR_SERVER_ENDPOINT', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    affiliation: affiliation,
+                    interest: interest,
+                    message: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Message sent successfully!');
+                document.getElementById('contactForm').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was a problem sending your message. Please try again later.');
+            });
+            */
         });
         
         // Smooth scrolling for navigation
