@@ -134,6 +134,7 @@
         .section-title {
             text-align: center;
             margin-bottom: 50px;
+            position: relative;
         }
         
         .section-title h2 {
@@ -156,10 +157,18 @@
             border-radius: 2px;
         }
         
+        .section-title p {
+            max-width: 700px;
+            margin: 15px auto 0;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
         .people-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 40px;
+            margin-bottom: 80px;
         }
         
         .person-card {
@@ -273,6 +282,42 @@
             transform: translateY(-5px);
         }
         
+        /* Supervisor Section */
+        .supervisor-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 80px;
+        }
+        
+        .supervisor-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            max-width: 700px;
+            width: 100%;
+        }
+        
+        .supervisor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        /* Alumni specific styling */
+        .alumni-section .person-header {
+            background: linear-gradient(135deg, #555, #333);
+        }
+        
+        .alumni-section .interests-title {
+            color: #666;
+        }
+        
+        .alumni-section .interest-tag {
+            background: #f0f0f0;
+            color: #555;
+        }
+        
         /* Footer */
         footer {
             background: var(--dark);
@@ -360,6 +405,10 @@
                 gap: 10px;
                 font-size: 0.9rem;
             }
+            
+            .supervisor-card {
+                max-width: 90%;
+            }
         }
         
         @media (max-width: 768px) {
@@ -404,6 +453,10 @@
             .people-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .supervisor-card {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -441,17 +494,17 @@
         </div>
     </section>
 
-    <!-- People Section -->
+    <!-- People Sections -->
     <section class="people-section">
         <div class="container">
+            <!-- Lab Supervisor Section -->
             <div class="section-title">
-                <h2>Lab Members</h2>
-                <p>Dedicated researchers working at the intersection of environmental science and AI</p>
+                <h2>Lab Supervisor</h2>
+                <p>The visionary leader guiding our research initiatives</p>
             </div>
             
-            <div class="people-grid">
-                <!-- Person 1 -->
-                <div class="person-card">
+            <div class="supervisor-container">
+                <div class="supervisor-card">
                     <div class="person-header">
                         <div class="person-photo">
                             <img src="https://th.bing.com/th/id/OIP.mFAlVTcVLZxcQNfRNTOENwHaI-?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Dr. N M Refat Nasher">
@@ -471,6 +524,8 @@
                                 <span class="interest-tag">Climate Change</span>
                                 <span class="interest-tag">AI Modeling</span>
                                 <span class="interest-tag">Water Quality</span>
+                                <span class="interest-tag">Sustainability</span>
+                                <span class="interest-tag">Environmental Policy</span>
                             </div>
                         </div>
                         
@@ -478,11 +533,20 @@
                             <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                             <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
                             <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Person 2 -->
+            </div>
+            
+            <!-- Graduate Students Section -->
+            <div class="section-title">
+                <h2>Graduate Students</h2>
+                <p>Our talented graduate researchers pushing the boundaries of environmental science</p>
+            </div>
+            
+            <div class="people-grid">
+                <!-- Graduate Student 1 -->
                 <div class="person-card">
                     <div class="person-header">
                         <div class="person-photo">
@@ -514,7 +578,7 @@
                     </div>
                 </div>
                 
-                <!-- Person 3 -->
+                <!-- Graduate Student 2 -->
                 <div class="person-card">
                     <div class="person-header">
                         <div class="person-photo">
@@ -526,8 +590,7 @@
                         </div>
                     </div>
                     <div class="person-body">
-                        <p class="person-bio">Md. Mahmudul Hasan is a Master’s student in Geography and Environment at Jagannath University, Dhaka, with research interests in groundwater, urban climate, natural hazards, and advanced GIS, Remote Sensing, Machine Learning, and Deep Learning applications. He has worked as a Research Assistant at East West University and authored 11 journal articles, two book chapters, and presented at international conferences. With over 10 manuscripts under review, he also reviews for Springer Nature and Elsevier. A voting member of IAUC, he founded the JnU Research and Higher Study Society and served as General Secretary of JnU Feature Writers and Green Voice, contributing 30+ opinion pieces to national dailies.
-</p>
+                        <p class="person-bio">Master's student with research interests in groundwater, urban climate, natural hazards, and advanced GIS/Remote Sensing applications. Authored 11 journal articles and two book chapters.</p>
                         
                         <div class="research-interests">
                             <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
@@ -547,7 +610,7 @@
                     </div>
                 </div>
                 
-                <!-- Person 4 - Md. Talha with custom link -->
+                <!-- Graduate Student 3 -->
                 <div class="person-card">
                     <div class="person-header">
                         <div class="person-photo">
@@ -559,8 +622,7 @@
                         </div>
                     </div>
                     <div class="person-body">
-                        <p class="person-bio">Md. Talha is a Master’s student in Geography and Environment at Jagannath University, Dhaka. His research interests include disaster management, urban climate, spatial data analysis, and geospatial applications using GIS, Remote Sensing, and Machine Learning. He has co-authored multiple research papers, including a published book chapter with Springer. Talha is currently working as an Assistant GIS Analyst at Sheltech, contributing to drone-based urban mapping projects. He has also been involved in field research on fire hazards and chemical industry site selection. Actively engaged in academic and social initiatives, he serves as the Joint Secretary of an environmental organization and aspires to pursue a research-driven career.
-</p>
+                        <p class="person-bio">Master's student researching disaster management, urban climate, and spatial data analysis. Co-authored multiple research papers and a book chapter with Springer. Currently working as Assistant GIS Analyst.</p>
                         
                         <div class="research-interests">
                             <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
@@ -581,7 +643,7 @@
                     </div>
                 </div>
                 
-                <!-- Person 5 -->
+                <!-- Graduate Student 4 -->
                 <div class="person-card">
                     <div class="person-header">
                         <div class="person-photo">
@@ -613,74 +675,78 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Additional Team Members -->
-                
-                <!-- Person 6 -->
+            </div>
+            
+            <!-- Undergraduate Students Section -->
+            <div class="section-title">
+                <h2>Undergraduate Students</h2>
+                <p>Bright undergraduate researchers contributing to our lab's innovative projects</p>
+            </div>
+            
+            <div class="people-grid">
+                <!-- Undergraduate 1 -->
                 <div class="person-card">
                     <div class="person-header">
                         <div class="person-photo">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Ayesha Rahman">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Ayesha Rahman">
                         </div>
                         <div class="person-info">
                             <h3 class="person-name">Ayesha Rahman</h3>
-                            <p class="person-role">Environmental Analyst</p>
+                            <p class="person-role">Undergraduate Researcher</p>
                         </div>
                     </div>
                     <div class="person-body">
-                        <p class="person-bio">Environmental analyst with expertise in water quality assessment and pollution monitoring. Currently researching heavy metal contamination in urban water bodies and its ecological impacts.</p>
+                        <p class="person-bio">Environmental science major researching microplastic pollution in river ecosystems. Developing novel sampling techniques and analysis methods for freshwater environments.</p>
                         
                         <div class="research-interests">
                             <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
                             <div class="interests-list">
-                                <span class="interest-tag">Water Quality</span>
-                                <span class="interest-tag">Pollution Monitoring</span>
-                                <span class="interest-tag">Heavy Metals</span>
-                                <span class="interest-tag">Ecological Risk</span>
+                                <span class="interest-tag">Microplastics</span>
+                                <span class="interest-tag">Freshwater Ecology</span>
+                                <span class="interest-tag">Pollution Analysis</span>
+                                <span class="interest-tag">Field Sampling</span>
                             </div>
                         </div>
                         
                         <div class="social-links">
                             <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                             <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Person 7 -->
+                <!-- Undergraduate 2 -->
                 <div class="person-card">
                     <div class="person-header">
                         <div class="person-photo">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Farhana Islam">
+                            <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Farhana Islam">
                         </div>
                         <div class="person-info">
                             <h3 class="person-name">Farhana Islam</h3>
-                            <p class="person-role">Climate Researcher</p>
+                            <p class="person-role">Undergraduate Researcher</p>
                         </div>
                     </div>
                     <div class="person-body">
-                        <p class="person-bio">Climate researcher focused on extreme weather events and their impacts on coastal communities. Developing early warning systems using climate models and machine learning approaches.</p>
+                        <p class="person-bio">Geography major with focus on urban heat island effects. Developing machine learning models to predict temperature variations in metropolitan areas using satellite imagery.</p>
                         
                         <div class="research-interests">
                             <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
                             <div class="interests-list">
-                                <span class="interest-tag">Extreme Weather</span>
-                                <span class="interest-tag">Climate Modeling</span>
-                                <span class="interest-tag">Early Warning Systems</span>
-                                <span class="interest-tag">Coastal Vulnerability</span>
+                                <span class="interest-tag">Urban Heat Islands</span>
+                                <span class="interest-tag">Thermal Imaging</span>
+                                <span class="interest-tag">Machine Learning</span>
+                                <span class="interest-tag">Urban Planning</span>
                             </div>
                         </div>
                         
                         <div class="social-links">
                             <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Person 8 -->
+                <!-- Undergraduate 3 -->
                 <div class="person-card">
                     <div class="person-header">
                         <div class="person-photo">
@@ -688,31 +754,30 @@
                         </div>
                         <div class="person-info">
                             <h3 class="person-name">Rahim Hossain</h3>
-                            <p class="person-role">AI Research Engineer</p>
+                            <p class="person-role">Undergraduate Researcher</p>
                         </div>
                     </div>
                     <div class="person-body">
-                        <p class="person-bio">AI engineer developing deep learning models for environmental applications. Specializes in computer vision for satellite image analysis and time series forecasting for hydrological systems.</p>
+                        <p class="person-bio">Computer science student developing AI applications for environmental monitoring. Creating deep learning models to identify deforestation patterns from satellite imagery.</p>
                         
                         <div class="research-interests">
                             <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
                             <div class="interests-list">
                                 <span class="interest-tag">Deep Learning</span>
                                 <span class="interest-tag">Computer Vision</span>
-                                <span class="interest-tag">Satellite Imagery</span>
-                                <span class="interest-tag">Hydrological Forecasting</span>
+                                <span class="interest-tag">Deforestation</span>
+                                <span class="interest-tag">Satellite Analysis</span>
                             </div>
                         </div>
                         
                         <div class="social-links">
                             <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Person 9 -->
+                <!-- Undergraduate 4 -->
                 <div class="person-card">
                     <div class="person-header">
                         <div class="person-photo">
@@ -720,19 +785,89 @@
                         </div>
                         <div class="person-info">
                             <h3 class="person-name">Tasnim Khan</h3>
-                            <p class="person-role">Research Assistant</p>
+                            <p class="person-role">Undergraduate Researcher</p>
                         </div>
                     </div>
                     <div class="person-body">
-                        <p class="person-bio">Research assistant working on noise pollution assessment in urban environments. Collecting and analyzing spatial-temporal noise data to develop mitigation strategies for urban green spaces.</p>
+                        <p class="person-bio">Environmental engineering student researching sustainable water management solutions. Developing models for rainwater harvesting efficiency in urban environments.</p>
                         
                         <div class="research-interests">
                             <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
                             <div class="interests-list">
-                                <span class="interest-tag">Noise Pollution</span>
-                                <span class="interest-tag">Urban Ecology</span>
-                                <span class="interest-tag">Spatial Analysis</span>
-                                <span class="interest-tag">Environmental Monitoring</span>
+                                <span class="interest-tag">Water Management</span>
+                                <span class="interest-tag">Sustainability</span>
+                                <span class="interest-tag">Hydrological Modeling</span>
+                                <span class="interest-tag">Urban Design</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Undergraduate 5 -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Sadia Akter">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Sadia Akter</h3>
+                            <p class="person-role">Undergraduate Researcher</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">Environmental science student specializing in soil quality assessment. Developing rapid testing methods for agricultural soil health using spectroscopy and machine learning.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Soil Science</span>
+                                <span class="interest-tag">Agriculture</span>
+                                <span class="interest-tag">Spectroscopy</span>
+                                <span class="interest-tag">Soil Health</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Alumni Section -->
+            <div class="section-title">
+                <h2>Lab Alumni</h2>
+                <p>Former members who have contributed to our lab's success</p>
+            </div>
+            
+            <div class="people-grid alumni-section">
+                <!-- Alumni -->
+                <div class="person-card">
+                    <div class="person-header">
+                        <div class="person-photo">
+                            <img src="https://tse1.explicit.bing.net/th/id/OIP.VTd50VjRAHz1-aVioc2GYwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Most. Mitu Akter">
+                        </div>
+                        <div class="person-info">
+                            <h3 class="person-name">Most. Mitu Akter</h3>
+                            <p class="person-role">Alumni · Research Associate (2019-2022)</p>
+                        </div>
+                    </div>
+                    <div class="person-body">
+                        <p class="person-bio">Former environmental scientist at DREAM Lab specializing in climate change vulnerability and adaptation. Contributed to projects on community resilience in coastal regions. Currently working as Environmental Consultant at GreenSolutions Ltd.</p>
+                        
+                        <div class="research-interests">
+                            <h4 class="interests-title"><i class="fas fa-flask"></i> Research Interests</h4>
+                            <div class="interests-list">
+                                <span class="interest-tag">Climate Adaptation</span>
+                                <span class="interest-tag">Community Resilience</span>
+                                <span class="interest-tag">Coastal Ecosystems</span>
+                                <span class="interest-tag">GIS Applications</span>
                             </div>
                         </div>
                         
